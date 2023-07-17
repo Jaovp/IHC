@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATV</title>
+    <title>ATV2</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <style>
-        .calculadora{
+        .calculadora {
             margin-top: 40px;
+            margin-bottom: auto;
             border: solid 1px #000;
             padding: 20px;
             background-color: #e2e2ce;
@@ -18,26 +20,31 @@
             box-shadow: 1px 1px 5px #000;
         }
 
-        .btn{
+        .btn {
             width: 60px;
             height: 50px;
             margin: 5px;
             box-shadow: 1px 1px 1px #000;
         }
 
-        .clear{
+        .button{
+            margin: 5px;
+            box-shadow: 1px 1px 1px #000;
+        }
+
+        .clear {
             width: 130px;
         }
 
-        .enter{
+        .enter {
             height: 110px;
         }
 
-        .zero{
+        .zero {
             width: 130px;
         }
 
-        .resultado{
+        .resultado {
             text-align: right;
             font-size: 20px;
             margin-top: 10px;
@@ -46,7 +53,17 @@
             box-shadow: 1px 1px 1px #000;
         }
 
-        .compara{
+        .compara {
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #e2e2ce;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+
+        .nota {
             margin-top: 40px;
             border: solid 1px #000;
             padding: 20px;
@@ -55,101 +72,376 @@
             box-shadow: 1px 1px 5px #000;
         }
 
+        .fatorial,
+        .vetor {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #e2e2ce;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+
+        .letra {
+            margin-top: 40px;
+            margin-bottom: 10px;
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #e2e2ce;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+
+        .matriz {
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #e2e2ce;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+
+        .escolha {
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #e2e2ce;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+
+        .vetor {
+            margin-top: 1px;
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #e2e2ce;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+
+        #resultLetra,
+        #resultMedia,
+        #resultNota,
+        #resultComparacao,
+        #resultMatriz,
+        #resultFatorial,
+        #resultOpcao,
+        #resultVetor {
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
     </style>
 </head>
+
 <body style="background-color: lightblue;">
 
     <div class="container">
-        <div class="row">
-            <div class="col d-flex">
+        <div class="col">
+            <div class="row justify-content-left">
                 <div class="calculadora">
-                    <input type="text" id="resultado" class="form-control resultado" placeholder="0" disabled="disabled"/>
+                    <input type="text" id="resultado" class="form-control resultado" placeholder="0"
+                        disabled="disabled" />
                     <div class="row">
-                        <button onclick="calcular('operacao', 'c')" type="button" class="btn btn-dark btn-lg clear font-weight-ligth">C</button>
-                        <button onclick="calcular('operacao', '/')" type="button" class="btn btn-dark btn-lg font-weight-ligth">/</button>
-                        <button onclick="calcular('operacao', '*')" type="button" class="btn btn-dark btn-lg font-weight-ligth">*</button>
+                        <button onclick="calcular('operacao', 'c')" type="button"
+                            class="btn btn-dark btn-lg clear font-weight-ligth">C</button>
+                        <button onclick="calcular('operacao', '/')" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">/</button>
+                        <button onclick="calcular('operacao', '*')" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">*</button>
                     </div>
 
                     <div class="row">
-                        <button onclick="calcular('numero', 7)" type="button" class="btn btn-dark btn-lg font-weight-ligth">7</button>
-                        <button onclick="calcular('numero', 8)" type="button" class="btn btn-dark btn-lg font-weight-ligth">8</button>
-                        <button onclick="calcular('numero', 9)" type="button" class="btn btn-dark btn-lg font-weight-ligth">9</button>
-                        <button onclick="calcular('operacao', '-')" type="button" class="btn btn-dark btn-lg font-weight-ligth">-</button>
+                        <button onclick="calcular('numero', 7)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">7</button>
+                        <button onclick="calcular('numero', 8)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">8</button>
+                        <button onclick="calcular('numero', 9)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">9</button>
+                        <button onclick="calcular('operacao', '-')" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">-</button>
                     </div>
 
                     <div class="row">
-                        <button onclick="calcular('numero', 4)" type="button" class="btn btn-dark btn-lg font-weight-ligth">4</button>
-                        <button onclick="calcular('numero', 5)" type="button" class="btn btn-dark btn-lg font-weight-ligth">5</button>
-                        <button onclick="calcular('numero', 6)" type="button" class="btn btn-dark btn-lg font-weight-ligth">6</button>
-                        <button onclick="calcular('operacao', '+')" type="button" class="btn btn-dark btn-lg font-weight-ligth">+</button>
+                        <button onclick="calcular('numero', 4)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">4</button>
+                        <button onclick="calcular('numero', 5)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">5</button>
+                        <button onclick="calcular('numero', 6)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">6</button>
+                        <button onclick="calcular('operacao', '+')" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">+</button>
                     </div>
 
                     <div class="row">
-                        <button onclick="calcular('numero', 1)" type="button" class="btn btn-dark btn-lg font-weight-ligth">1</button>
-                        <button onclick="calcular('numero', 2)" type="button" class="btn btn-dark btn-lg font-weight-ligth">2</button>
-                        <button onclick="calcular('numero', 3)" type="button" class="btn btn-dark btn-lg font-weight-ligth">3</button>
-                        <button onclick="calcular('operacao', '=')" type="button" class="btn btn-dark btn-lg enter font-weight-ligth">=</button>
+                        <button onclick="calcular('numero', 1)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">1</button>
+                        <button onclick="calcular('numero', 2)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">2</button>
+                        <button onclick="calcular('numero', 3)" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">3</button>
+                        <button onclick="calcular('operacao', '=')" type="button"
+                            class="btn btn-dark btn-lg enter font-weight-ligth">=</button>
                     </div>
 
                     <div class="row" style="margin-top: -60px;">
-                        <button onclick="calcular('numero', 0)" type="button" class="btn btn-dark btn-lg zero font-weight-ligth">0</button>
-                        <button onclick="calcular('operacao', '.')" type="button" class="btn btn-dark btn-lg font-weight-ligth">.</button>                       
+                        <button onclick="calcular('numero', 0)" type="button"
+                            class="btn btn-dark btn-lg zero font-weight-ligth">0</button>
+                        <button onclick="calcular('operacao', '.')" type="button"
+                            class="btn btn-dark btn-lg font-weight-ligth">.</button>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="compara">
+                        <h2>Compare Numeros</h2>
+                        <input type="text" id="valor1" class="form-control resultado" placeholder="0" />
+                        <input type="text" id="valor2" class="form-control resultado" placeholder="0" />
+                        <button onclick="compara()">Compare</button>
+                        <p id="resultComparacao"></p>
+                    </div>
+
+                    <div class="matriz">
+                        <h2>Matriz</h2>
+                        <label for="tamanhoMatriz" style="font-weight: bold;">Numero de linhas:</label>
+                        <select id="tamanhoMatriz" onchange="atualizarInterfaceMatriz()">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <h3>Numeros separados por espaço</h3>
+                        <input type="text" id="linha1" class="form-control resultado" placeholder="Linha 1" />
+                        <input type="text" id="linha2" class="form-control resultado" placeholder="Linha 2" />
+                        <input type="text" id="linha3" class="form-control resultado" placeholder="Linha 3" />
+                        <button onclick="Matriz('somar')">Somar</button>
+                        <button onclick="Matriz('media')">Média</button>
+                        <p id="resultMatriz"></p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="nota">
+                        <h2>Nota do Aluno</h2>
+                        <input type="text" id="nota1" class="form-control resultado" placeholder="0" />
+                        <button onclick="nota()">Calcular</button>
+                        <p id="resultNota"></p>
+                    </div>
+
+                    <div class="fatorial">
+                        <h2>Fatorial</h2>
+                        <input type="text" id="fatorial" class="form-control resultado" placeholder="0" />
+                        <button onclick="fatorial()">Calcular</button>
+                        <p id="resultFatorial"></p>
+                    </div>
+
+                    <div class="vetor">
+                        <h2>Vetor</h2>
+                        <h3>Numeros separados por espaço</h3>
+                        <input type="text" id="vetor" class="form-control resultado" placeholder="" />
+                        <button onclick="vetor('media')">Média</button>
+                        <button onclick="vetor('maior')">Maior</button>
+                        <p id="resultVetor"></p>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="letra">
+                        <h2>Verificar Letra</h2>
+                        <input type="text" id="letra" class="form-control resultado" placeholder="" />
+                        <button onclick="letra()">Verificar</button>
+                        <p id="resultLetra"></p>
+                    </div>
+
+                    <div class="escolha">
+                        <h2>Escolha</h2>
+                        <button class="button" onclick="escolherOpcao('1')">Opção 1</button>
+                        <button class="button" onclick="escolherOpcao('2')">Opção 2</button>
+                        <button class="button" onclick="escolherOpcao('3')">Opção 3</button>
+                        <button class="button" onclick="escolherOpcao('4')">Opção 4</button>
+                        <button class="button" onclick="escolherOpcao('5')">Opção 5</button>
+                        <p id="resultOpcao"></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <div class="col d-flex justify-content-top">
-            <div class="compara">
-                <h2>Compare Numeros</h2>
-                <input type="text" id="valor1" class="form-control resultado" placeholder="0" />
-                <input type="text" id="valor2" class="form-control resultado" placeholder="0" /> 
-                    <button onclick="compara()">Compare</button>                  
-                    <p id="result"></p>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function calcular(tipo, valor){
-            if(tipo == 'operacao'){
+        function calcular(tipo, valor) {
+            if (tipo == 'operacao') {
 
-                if(valor === 'c'){
+                if (valor === 'c') {
                     //limpar visor
                     document.getElementById('resultado').value = ''
                 }
 
-                if(valor === '+' || valor === '-' || valor === '*' || valor === '/' || valor === '.'){
+                if (valor === '+' || valor === '-' || valor === '*' || valor === '/' || valor === '.') {
                     document.getElementById('resultado').value += valor
                 }
 
-                if(valor === '='){
+                if (valor === '=') {
                     let valor_campo = eval(document.getElementById('resultado').value)
                     document.getElementById('resultado').value = valor_campo
                 }
 
-            } else 
-            if(tipo === 'numero'){
+            } else
+                if (tipo === 'numero') {
                     document.getElementById('resultado').value += valor
-            } 
+                }
         }
 
-        function compara(){
-            let valor1 = document.getElementById("valor1").value;
-            let valor2 = document.getElementById("valor2").value;
+        function compara() {
+            let valor1 = parseFloat(document.getElementById("valor1").value);
+            let valor2 = parseFloat(document.getElementById("valor2").value);
             if (valor1 > valor2) {
-                document.getElementById("result").textContent = "O maior numero é: " + valor1;
-            } else if (number2 > number1) {
-                document.getElementById("result").textContent = "O maior numero é: " + valor2;
+                document.getElementById("resultComparacao").innerHTML = "O valor " + valor1 + " é maior";
+            } else if (valor1 < valor2) {
+                document.getElementById("resultComparacao").innerHTML = "O valor " + valor2 + " é maior";
             } else {
-                document.getElementById("result").textContent = "Os numeros são iguais";
+                document.getElementById("resultComparacao").innerHTML = "Os valores são iguais";
             }
+        }
+
+        function nota() {
+            let nota1 = document.getElementById("nota1").value;
+            if (nota1 >= 8) {
+                document.getElementById("resultNota").innerHTML = "Aprovado com louvor";
+            } else if (nota1 >= 6 && nota1 < 8) {
+                document.getElementById("resultNota").innerHTML = "Aprovado";
+            } else {
+                document.getElementById("resultNota").innerHTML = "Reprovado";
+            }
+        }
+
+        function letra() {
+            let letra = document.getElementById("letra").value;
+            if (letra == "a") {
+                document.getElementById("resultLetra").innerHTML = "A";
+            } else if (letra == "b") {
+                document.getElementById("resultLetra").innerHTML = "B";
+            } else {
+                document.getElementById("resultLetra").innerHTML = "Outra letra";
+            }
+        }
+
+        function atualizarInterfaceMatriz() {
+            const tamanhoMatriz = document.getElementById("tamanhoMatriz").value;
+
+            if (tamanhoMatriz === "2") {
+                document.getElementById("linha3").style.display = "none";
+                document.getElementById("linha3").value = "";
+            } else if (tamanhoMatriz === "3") {
+                document.getElementById("linha3").style.display = "block";
+            }
+        }
+
+        function Matriz(operacao) {
+            const tamanhoMatriz = document.getElementById("tamanhoMatriz").value;
+
+            const linha1Input = document.getElementById("linha1").value;
+            const linha2Input = document.getElementById("linha2").value;
+            const linha3Input = document.getElementById("linha3").value;
+
+            const linha1 = linha1Input.trim().split(" ").map(Number);
+            const linha2 = linha2Input.trim().split(" ").map(Number);
+            const linha3 = tamanhoMatriz === "3" ? linha3Input.trim().split(" ").map(Number) : [];
+
+            const matriz = [linha1, linha2, linha3];
+
+            const soma = calcularSoma(matriz);
+
+            if (operacao === "somar") {
+                document.getElementById("resultMatriz").textContent = "A soma dos elementos da matriz é: " + soma;
+            } else {
+                const media = soma / (linha1.length + linha2.length + linha3.length);
+                document.getElementById("resultMatriz").textContent = "A média dos elementos da matriz é: " + media;
+            }
+        }
+
+
+
+        function calcularSoma(x) {
+            let soma = 0;
+
+            for (let i = 0; i < x.length; i++) {
+                for (let j = 0; j < x[i].length; j++) {
+                    soma += x[i][j];
+                }
+            }
+
+            return soma;
+        }
+
+        function calcularQuantidadeLinhas(matriz) {
+            let quantidadeLinhas = 0;
+
+            for (let i = 0; i < matriz.length; i++) {
+                if (matriz[i].length > 0) {
+                    quantidadeLinhas++;
+                }
+            }
+
+            return quantidadeLinhas;
+        }
+
+        function fatorial() {
+            let fatorial = document.getElementById("fatorial").value;
+            let resultado = 1;
+            for (let i = 1; i <= fatorial; i++) {
+                resultado *= i;
+            }
+            document.getElementById("resultFatorial").innerHTML = "Fatorial de " + fatorial + " é " + resultado;
+        }
+
+        function escolherOpcao(opcao) {
+            if (opcao === '1') {
+                document.getElementById("resultOpcao").innerHTML = "Opção 1 escolhida";
+            } else if (opcao === '2') {
+                document.getElementById("resultOpcao").innerHTML = "Opção 2 escolhida";
+            } else if (opcao === '3') {
+                document.getElementById("resultOpcao").innerHTML = "Opção 3 escolhida";
+            } else {
+                document.getElementById("resultOpcao").innerHTML = "Opção Invalida";
+            }
+
+        }
+
+        function vetor(operacao2) {
+            const vetorInput = document.getElementById("vetor").value;
+            const vetor = vetorInput.trim().split(" ").map(Number);
+
+            if (operacao2 === 'media') {
+                const soma = calcularSoma([vetor]);
+                const media = soma / (vetor.length);
+                document.getElementById("resultVetor").textContent = "A média dos elementos do vetor é: " + media;
+            } else {
+                const maior = encontrarMaiorNumero(vetor);
+                document.getElementById("resultVetor").textContent = "O maior elemento do vetor é: " + maior;
+            }
+        }
+
+        function encontrarMaiorNumero(vetor) {
+            if (vetor.length === 0) {
+                return null;
+            }
+            var maior = vetor[0];
+            for (var i = 1; i < vetor.length; i++) {
+                if (vetor[i] > maior) {
+                    maior = vetor[i];
+                }
+            }
+            return maior;
         }
 
     </script>
 
-    
 </body>
+
 </html>
